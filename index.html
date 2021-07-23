@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+</head>
+<body style="background-color: #666666;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100" >
+				<div class="login100-form validate-form" >
+					<span class="login100-form-title p-b-43">
+						Iniciar sesión para continuar
+					</span>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="email" id="email" name="email">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Email</span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" id="pass" name="pass">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Contraseña</span>
+					</div>
+
+					<div class="flex-sb-m w-full p-t-3 p-b-32">
+
+						<div>
+							<button  data-bs-toggle="modal" data-bs-target="#exampleModal1">
+								¿Se te olvidó tu contraseña?
+							</button>
+							<button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+								regístrate
+							  </button>
+						</div>
+					</div>
+			
+					<div id="error1">
+					
+					</div>
+					<div class="container-login100-form-btn">
+						
+						<button class="login100-form-btn" id="SigIn">
+							Iniciar sesión
+						</button>
+					</div>
+				</div>
+
+				<div class="login100-more" style="background-image: url('img/2.jpg');">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+			<span class="login100-form-title p-b-43">recuperar Password</span>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="mb-3 row">
+					<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+					  <input type="email"  class="form-control" id="emailre" required>
+					</div>
+				</div>
+				  <div id="error2">
+					
+				  </div>
+			</div>
+			<div class="modal-footer">
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" id="recuperar">
+						enviar
+					</button>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+			<span class="login100-form-title p-b-43">regístrate</span>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="mb-3 row">
+					<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input type="email"  class="form-control" id="emailr" required>
+						<div id="validationE" class="invalid-feedback">
+							
+						</div>
+					</div>
+					
+				</div>
+				<div class="mb-3 row">
+					<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="passr" required>
+					</div>
+				</div>
+				  <div class="mb-3 row">
+					<label for="inputNombre" class="col-sm-2 col-form-label">Nombres</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" id="nombresr" required>
+					</div>
+				  </div>
+				  <div class="mb-3 row">
+					<label for="inputNombre" class="col-sm-2 col-form-label">Apellidos</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" id="apelliodosr" required>
+					</div>
+				  </div>
+				  <div class="mb-3 row">
+					<label for="inputNombre" class="col-sm-2 col-form-label">Codigo</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" id="codigor" required>
+					</div>
+				  </div>
+				  <select class="form-select" aria-label="Default select example" id="carrerar">
+					<option selected>Carrera</option>
+					<option value="1">Ingeniería de sistemas </option>
+					<option value="2">Ingeniería Ambiental</option>
+					<option value="3">Ingeniería agroindustrial</option>
+					<option value="4">Administración de empresas</option>
+					<option value="5">Contabilidad</option>
+					<option value="6">Educación primaria intercultural bilingüe</option>
+				  </select>
+				  <br>
+				  <select class="form-select" aria-label="Default select example" id="tipor">
+					<option selected>Tipo de investigación </option>
+					<option value="1">Titulo profesional </option>
+					<option value="2">Bachiller </option>
+					<option value="3">Semilleros de investigación </option>
+				  </select><br>
+				  <div id="errorPostulante">
+					
+				  </div>
+				  <div class="modal-footer">
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" id="registrarPostulante">
+							regístrarme
+						</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Modal -->
+			<!-- <div class="modal fade" id="modalcito"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+					...
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+				</div>
+			</div>
+			<script>
+				var myModal = new bootstrap.Modal(document.getElementById('modalcito'))
+				myModal.show()
+			</script>pt -->
+		</div>
+		</div>
+	</div>
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/credentials.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

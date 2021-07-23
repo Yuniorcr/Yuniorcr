@@ -1,0 +1,18 @@
+.footer {
+    display: flex;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+    background: #343A40;
+  }
+  
+  .footer a {
+    color: #9A9D90;;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+  }
+  
+  .footer a:hover {
+    color: white;
+  }
