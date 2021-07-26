@@ -15,23 +15,32 @@ document.getElementById("SigIn").addEventListener("click",function validateEmail
 
 function SigIn(email, password){
     firebase.auth().signInWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    var user = userCredential.user;
-    location.href = "main.html"
-    // ...
-  })
-  .catch((error) => {
-    
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    errorMes = document.getElementById("error1")
-    errorMes.innerHTML =`
-    <div class="alert alert-danger" role="alert">
-    ${errorMessage}
-    </div>`
-    
-  });
+    .then((userCredential) => {
+      // Signed in
+      var user = userCredential.user;
+      var db = firebase.firestore();
+      db.collection("users").where("email", "==", email).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          if(doc.data().participante == "postulante"){
+            location.href = "postulante-proyecto.html"
+          }else{
+            location.href = "main.html"
+          }
+          
+        });
+    });
+    })
+    .catch((error) => {
+      
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      errorMes = document.getElementById("error1")
+      errorMes.innerHTML =`
+      <div class="alert alert-danger" role="alert">
+      ${errorMessage}
+      </div>`
+      
+    });
 }
 
 document.getElementById("recuperar").addEventListener("click",function recuperar(){
@@ -71,9 +80,6 @@ function sesionActiva(){
         }
       });
 }
-setTimeout(() => {
-  sesionActiva();
-}, 1000);
 
 document.getElementById("registrarPostulante").addEventListener("click",function registrarPostulante(){
   email = document.getElementById("emailr").value
@@ -87,7 +93,6 @@ document.getElementById("registrarPostulante").addEventListener("click",function
   firebase.auth().createUserWithEmailAndPassword(email, pass)
   .then((userCredential) => {
     // Signed in
-    var user = userCredential.user;
     registrarTablaUsers(email,firstName,secondName,code, carrera, type)
     enviarEmail()
     error2.innerHTML = `
@@ -111,35 +116,29 @@ document.getElementById("registrarPostulante").addEventListener("click",function
 
 
 function registrarTablaUsers(email, firstName, secondName, code, carrera, type){
-    // Add a new document in collection "cities"
-    db.collection("users").doc("info").set({
-      email: email,
-      name: firstName,
-      lastName: secondName,
-      code: code,
-      carrera: carrera,
-      type: type
+  var db = firebase.firestore();
+  db.collection("users").add({
+        email: email,
+        firstName: firstName,
+        secondName: secondName,
+        code: code,
+        carrera: carrera,
+        type: type,
+        participante: "postulante"
     })
-    .then(() => {
-      console.log("Document successfully written!");
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
     })
     .catch((error) => {
-      console.error("Error writing document: ", error);
+        console.error("Error adding document: ", error);
     });
 }
 
 function enviarEmail(){
-  firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+  firebase.auth().currentUser.sendEmailVerification()
   .then(() => {
-    // The link was successfully sent. Inform the user.
-    // Save the email locally so you don't need to ask the user for it again
-    // if they open the link on the same device.
-    window.localStorage.setItem('emailForSignIn', email);
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    // Email verification sent!
     // ...
   });
 }
+
