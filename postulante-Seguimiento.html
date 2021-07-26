@@ -12,7 +12,13 @@
     <!-- Icons Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/9a4a4d3d5a.js" crossorigin="anonymous"></script>
-    
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
 
     <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -108,7 +114,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="postulante.html" class="nav-link text-white" aria-current="page">
+        <a href="postulante.html"  class="nav-link text-white" aria-current="page">
           <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
           Inicio
         </a>
@@ -149,7 +155,7 @@
         <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li><a class="dropdown-item" onclick="sigOut()">Sign out</a></li>
       </ul>
     </div>
   </div>
@@ -161,5 +167,7 @@
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/sidebars.js"></script>
+    <script src="js/credentials.js"></script>
+    <script src="js/postulante.js"></script>
   </body>
 </html>

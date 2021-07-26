@@ -164,7 +164,7 @@
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
               <button type="button" class="btn btn-sm btn-outline-secondary">Buscar</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
+              <button onclick="limpiarVentana()" type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
             </div>
           </div>
         </div>
@@ -173,13 +173,16 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Codigo</th>
                 <th>Carrera</th>
                 <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Modalidad</th>
+                <th>Tipo</th>
               </tr>
             </thead>
-              <tbody id="tabla">
+              <tbody id="tablaj">
               </tbody>
           </table>
         </div>
@@ -203,21 +206,17 @@
             <table class="table table-striped table-sm">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>Email</th>
+                  <th>Codigo</th>
+                  <th>Carrera</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Modalidad</th>
+                  <th>Tipo</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Dato</td>
-                  <td>Dato</td>
-                  <td>Dato</td>
-                  <td><a href="#" class="link-danger"><span data-feather="trash-2"></span>Eliminar</a></td>
-                  <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2"><span data-feather="refresh-cw"></span>Actualizar</a></td>
-                </tr>
+              <tbody id="tablap">
+                  
               </tbody>
             </table>
           </div>
@@ -284,40 +283,56 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Apellidos</span>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" id="Apellidosj">
+          <div class="mb-3 row">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email"  class="form-control" id="emailj" required>
+              <div id="validationE" class="invalid-feedback">
+                
+              </div>
+            </div>
+            
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Nombres</span>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" id="Nombresj">
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="passj" required>
+            </div>
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">E-mail</span>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" id="Telefonoj">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"></span>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" id="Telefonoj">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Telefono</span>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" id="Telefonoj">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Dni</span>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" id="Dnij">
-          </div>
-          <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              Carrera
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Ingenieria de Sistemas</a></li>
-              <li><a class="dropdown-item" href="#">Ingenieria Agroindustrial</a></li>
-              <li><a class="dropdown-item" href="#">Educacion Intercultural</a></li>
-            </ul>
-          </div>
+            <div class="mb-3 row">
+            <label for="inputNombre" class="col-sm-2 col-form-label">Nombres</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="nombresj" required>
+            </div>
+            </div>
+            <div class="mb-3 row">
+            <label for="inputNombre" class="col-sm-2 col-form-label">Apellidos</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="apelliodosj" required>
+            </div>
+            </div>
+            <div class="mb-3 row">
+            <label for="inputNombre" class="col-sm-2 col-form-label">Codigo</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="codigoj" required>
+            </div>
+            </div>
+            <select class="form-select" aria-label="Default select example" id="carreraj">
+            <option selected>Carrera</option>
+            <option value="1">Ingeniería de sistemas </option>
+            <option value="2">Ingeniería Ambiental</option>
+            <option value="3">Ingeniería agroindustrial</option>
+            <option value="4">Administración de empresas</option>
+            <option value="5">Contabilidad</option>
+            <option value="6">Educación primaria intercultural bilingüe</option>
+            </select>
+            <br>
+            <select class="form-select" aria-label="Default select example" id="tipoj">
+            <option selected>Tipo de investigación </option>
+            <option value="1">Titulo profesional </option>
+            <option value="2">Bachiller </option>
+            <option value="3">Semilleros de investigación </option>
+            </select>
           <br>
           <div id="errorjurado">
           </div>
@@ -418,15 +433,19 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Eliminar Jurado</h5>
+        <h5 class="modal-title" id="tituloEmail"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        
         <h2>Estas seguro que eliminar?</h2>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Eliminar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="eliminar()">Eliminar</button>
+        <div id="Eliminar">
+          
+        </div>
       </div>
     </div>
   </div>

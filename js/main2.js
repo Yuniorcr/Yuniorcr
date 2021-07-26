@@ -24,61 +24,120 @@ firebase.auth().onAuthStateChanged(function(user) {
       email = user.email;
       photoUrl = user.photoURL;
       emailVerified = user.emailVerified;
-      console.log(uid)
     }
   } else {
     console.log("no exise")
   }
 });
 
-function mostrarTabla(){
+function mostrarTablaj(){
   var db = firebase.firestore();
-  var tb = document.getElementById("tabla")
-  db.collection("users").get().then((querySnapshot) => {
+  var tb = document.getElementById("tablaj")
+  db.collection("users").where("participante", "==", "jurado").onSnapshot((querySnapshot) => {
     tb.innerHTML=''
     querySnapshot.forEach((doc) => {
-       tb.innerHTML +=`
-       <tr>
-          <td>${doc.id}</td>
-          <td>${doc.data().apellido}</td>
+      tb.innerHTML +=`
+      <tr> 
+          <td>${doc.data().email}</td>
+          <td>${doc.data().code}</td>
           <td>${doc.data().carrera}</td>
-          <td>${doc.data().names}</td>
-          <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="iconify" data-icon="feather-trash-2" data-inline="false"></span>Eliminar</a></td>
-          <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="actualizar('${doc.id}','${doc.data().carrera}')"><span class="iconify" data-icon="feather-refresh-cw" data-inline="false"></span>Actualizar</a></td>
+          <td>${doc.data().firstName}</td>
+          <td>${doc.data().secondName}</td>
+          <td>${doc.data().type}</td>
+          <td>${doc.data().participante}</td>
+          
+          <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4" onclick="eliminarMensaje('${doc.id}','${doc.data().email}')"><span class="iconify" data-icon="feather-trash-2" data-inline="false"></span>Eliminar</a></td>
+          <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="actualizar('${doc.data().email}','${doc.data().firstName}','${doc.data().secondName}','${doc.data().code}','${doc.data().carrera}','${doc.data().type}')"><span class="iconify" data-icon="feather-refresh-cw" data-inline="false"></span>Actualizar</a></td>
         </tr>`
     });
 });
 }
-mostrarTabla()
-
-function registrarJurado(){
-  var error = document.getElementById("errorjurado");
+mostrarTablaj()
+// console.log(document.getElementById("id").value)
+function mostrarTablap(){
   var db = firebase.firestore();
-  db.collection("users").add({
-    Apellidos: "Clinton",
-    last: "Cardenas Quispe",
-    born: 1999,
-    code: "1005620181"
-  })
-  .then((docRef) => {
-    error.innerHTML = `
-    <div class="alert alert-success" role="alert">
-      se ha ingresado correctamente
-    </div>`
-    console.log("Document written with ID: ", docRef.id);
-  })
-  .catch((error) => {
-    error.innerHTML = `
-    <div class="alert alert-danger" role="alert">
-      ${error}
-    </div>`
-    console.error("Error adding document: ", error);
+  var tb = document.getElementById("tablap")
+  db.collection("users").where("participante", "==", "postulante").onSnapshot((querySnapshot) => {
+    tb.innerHTML=''
+    querySnapshot.forEach((doc) => {
+    tb.innerHTML+=`
+    <tr>
+      <td>${doc.data().email}</td>
+      <td>${doc.data().code}</td>
+      <td>${doc.data().carrera}</td>
+      <td>${doc.data().firstName}</td>
+      <td>${doc.data().secondName}</td>
+      <td>${doc.data().type}</td>
+      <td>${doc.data().participante}</td>
+      <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4" onclick="eliminarMensaje('${doc.id}','${doc.data().email}')"><span class="iconify" data-icon="feather-trash-2" data-inline="false"></span>Eliminar</a></td>
+      <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2"><span data-feather="refresh-cw"></span>Actualizar</a></td>
+    </tr>`
+    });
   });
 }
+mostrarTablap()
 
-function actualizar(id, carrera){
-    document.getElementById('Apellidosj').value = id
-    document.getElementById('Apellidosj').value = carrera
+function registrarJurado(){
+  var errorj = document.getElementById("errorjurado");
+  var db = firebase.firestore();
+  email = document.getElementById("emailj").value
+  pass = document.getElementById("passj").value
+  firstName = document.getElementById("nombresj").value
+  secondName = document.getElementById("apelliodosj").value
+  code = document.getElementById("codigoj").value
+  carrera = document.getElementById("carreraj").value
+  type = document.getElementById("tipoj").value
+  firebase.auth().createUserWithEmailAndPassword(email, pass)
+  .then((userCredential) => {
+    // Signed in
+    db.collection("users").add({
+      email: email,
+      firstName: firstName,
+      secondName: secondName,
+      code: code,
+      carrera: carrera,
+      type: type,
+      participante: "jurado"
+    })
+    .then((docRef) => {
+      document.getElementById("emailj").value = ""
+      document.getElementById("passj").value = ""
+      document.getElementById("nombresj").value = ""
+      document.getElementById("apelliodosj").value = ""
+      document.getElementById("codigoj").value = ""
+      errorj.innerHTML = `
+    <div class="alert alert-success" role="alert">
+      Se registro Correctamente<br>
+    </div>`
+    })
+    .catch((error) => {
+      console.log(error)
+      console.log("no write")
+    });
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorMessage)
+    // ..
+    errorj.innerHTML = `
+    <div class="alert alert-danger" role="alert">
+      ${errorCode}<br>
+      ${errorMessage}
+    </div>`
+
+  });
+  
+}
+
+function actualizar(email, nombres, apellidos, codigo, carrera, tipo){
+    
+    document.getElementById("emailj").value = email
+    document.getElementById("nombresj").value = nombres
+    document.getElementById("apelliodosj").value = apellidos
+    document.getElementById("codigoj").value = codigo
+    document.getElementById('carreraj').value = carrera
+    document.getElementById('tipoj').value = tipo
     
     // var boton = document.getElementById('boton')
     // boton.innerHTML=`editar`
@@ -109,11 +168,28 @@ function actualizar(id, carrera){
     //     }); 
     // }
 }
+function limpiarVentana() {
+  document.getElementById("emailj").value = ""
+  document.getElementById("passj").value = ""
+  document.getElementById("nombresj").value = ""
+  document.getElementById("apelliodosj").value = ""
+  document.getElementById("codigoj").value = ""
+}
 
-function eliminar(id) {
+function eliminarMensaje(idE, email) {
+  console.log(email, idE)
+  var deleteID = document.getElementById("Eliminar")
+  var emailMensaje = document.getElementById("tituloEmail")
+  emailMensaje.innerText = 'eliminar: '+email
+  deleteID.innerHTML =`<input type="text" id="id" value="${idE}" class="form-control" hidden>`
+}
+
+function eliminar() {
+  id = document.getElementById("id").value
   var db = firebase.firestore();
   db.collection("users").doc(id).delete().then(function() {
       console.log("Document successfully deleted!");
+      document.getElementById("id").value = ""
   }).catch(function(error) {
       console.error("Error removing document: ", error);
   });
