@@ -194,3 +194,33 @@ function eliminar() {
       console.error("Error removing document: ", error);
   });
 }
+
+function mostrarTablaProyectos(){
+  var tb = document.getElementById("tablaProyectos")
+  var db = firebase.firestore();
+  db.collection("nombre-proyecto").onSnapshot((querySnapshot) => {
+    tb.innerHTML=""
+    querySnapshot.forEach((doc) => {
+      tb.innerHTML +=`<tr>
+        <td>${doc.data().nombreProyecto}</td>
+        <td>${doc.data().responsable}</td>
+        <td>${doc.data().tipoinvestigacion}</td>
+        <td>${doc.data().problemaSolucionar}</td>
+        <td>${doc.data().objetivoGeneral}</td>
+        <td>${doc.data().categoria}</td>
+        <td><a href="#" class="link-danger" onclick="eliminar2('${doc.id}')"><span data-feather="trash-2"></span>Eliminar</a></td>
+        <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal3"><span data-feather="refresh-cw"></span>Actualizar</a></td>
+      </tr>`
+    });
+  });
+}
+mostrarTablaProyectos()
+
+function eliminar2(id) {
+  var db = firebase.firestore();
+  db.collection("nombre-proyecto").doc(id).delete().then(function() {
+      console.log("Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
+}

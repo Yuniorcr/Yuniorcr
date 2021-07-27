@@ -19,7 +19,7 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -188,8 +188,14 @@
         </div>
         <div class="modal-body">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="NombreProyecto">Nombre Proyecto</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="NombreProyecto">
+            <span class="input-group-text">Nombre Proyecto</span>
+            <input type="text" class="form-control" id="NombreProyecto" aria-label="Sizing example input" aria-describedby="NombreProyecto">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="NombreResponsable">Responsable</span>
+            <div id="responsable">
+
+            </div>
           </div>
           <div class="input-group mb-3" id="categoriaPostulante">
             
@@ -213,76 +219,22 @@
               <thead>
                 <tr>
                   <th scope="col">Actividades</th>
-                  <th scope="col">Mes 1</th>
-                  <th scope="col">Mes 2</th>
-                  <th scope="col">Mes 3</th>
-                  <th scope="col">Mes 4</th>
-                  <th scope="col">Mes 5</th>
-                  <th scope="col">Mes 6</th>
+                  <th scope="col">Desde</th>
+                  <th scope="col">Hasta</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">
+              <tbody id="tablitaMes">
+                <th scope="row">
                     <div class="input-group">
                       <input type="text" class="form-control" placeholder="Actividad" id="Actividad">
                     </div>
-                  </th>
-                  <td>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="mes1" id="mes1" aria-label="Checkbox for following text input">
-                      </div>
-                    </div>
-                    <script>
-                      document.getElementById("mes1").addEventListener("click", function verify() {
-                          if(document.getElementById("mes1").checked == true){
-                            console.log("marcado")
-                          }else{
-                            console.log("sin Marcar")
-                          }
-                      })
-                    </script>
-                  </td>
-                  <td>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="mes2" aria-label="Checkbox for following text input">
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="mes3" aria-label="Checkbox for following text input">
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="mes4" aria-label="Checkbox for following text input">
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="mes5" aria-label="Checkbox for following text input">
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <input class="form-check-input mt-0" type="checkbox" value="mes6" aria-label="Checkbox for following text input">
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="7" class="text-center"><a href="#" class="link-info"><i class="fas fa-plus"></i> Agregar Actividad</a></td>
-                </tr>
+                </th>
+                <td>
+                  <input type="date" id="inicio">
+              </td>
+              <td>
+                <input type="date" id="fin">
+              </td>
               </tbody>
             </table>
           </div>
@@ -293,7 +245,10 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+        </div><br>
+        <div id="sucessfull">
+
         </div>
       </div>
     </div>
