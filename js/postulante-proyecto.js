@@ -10,22 +10,24 @@ function verificarPerfil(){
             var db = firebase.firestore();
             db.collection("users").where("email", "==", user.email).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    if(doc.data().type == "3"){
+                    if(doc.data().type == "Semilleros de investigación"){
                         desactivar.innerHTML =`<select class="form-select" aria-label="Disabled select example" disabled>
                         <option selected>Tipo de Investigación</option>
-                        <option value="1">Experimental</option>
-                        <option value="2">No experimental</option>
+                        <option value="Experimental">Experimental</option>
+                        <option value="No experimental">No experimental</option>
                         </select>`
                     }else{
                         desactivar.innerHTML =`<select class="form-select" aria-label="Disabled select example" id="tipoinvestigacion">
                         <option selected>Tipo de Investigación</option>
-                        <option value="1">Experimental</option>
-                        <option value="2">No experimental</option>
+                        <option value="Experimental">Experimental</option>
+                        <option value="No experimental">No experimental</option>
                         </select>`
                     }
                     categoria.innerHTML =`<span class="input-group-text" id="Categoría">Categoría</span>
-                    <input type="text" class="form-control" value="${doc.data().type}" id="categoria"aria-label="Sizing example input" aria-describedby="Categoría" disabled>`
-                    document.getElementById("responsable").innerHTML =`<input type="text" id="responsable" value="${doc.data().firstName} ${doc.data().secondName}"class="form-control" aria-label="Sizing example input" aria-describedby="NombreResponsable" disabled>`
+                    <input type="text" class="form-control" value="${doc.data().type}" id="categoria" aria-label="Sizing example input" aria-describedby="Categoría" disabled>`
+                    document.getElementById("responsable").innerHTML =`
+                    <span class="input-group-text" id="NombreResponsable">Responsable</span>
+            <input type="text" id="responsable" value="${doc.data().firstName} ${doc.data().secondName}" class="form-control" aria-label="Sizing example input" aria-describedby="NombreResponsable" disabled>`
 });
             });
         } else {

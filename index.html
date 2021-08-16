@@ -69,13 +69,17 @@
 							</button>
 							<button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
 								regístrate
-							  </button>
+							</button>
 						</div>
 					</div>
 			
 					<div id="error1">
 					
 					</div>
+					<div id="load">
+
+					</div>
+					
 					<div class="container-login100-form-btn">
 						
 						<button class="login100-form-btn" id="SigIn">
@@ -101,12 +105,13 @@
 				<div class="mb-3 row">
 					<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 					<div class="col-sm-10">
-					  <input type="email"  class="form-control" id="emailre" required>
+						<input type="email"  class="form-control" id="emailre" required>
 					</div>
 				</div>
-				  <div id="error2">
-					
-				  </div>
+				<div id="error2">
+				
+				</div>
+				
 			</div>
 			<div class="modal-footer">
 				<div class="container-login100-form-btn">
@@ -128,15 +133,12 @@
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
+				<form id=""></form>
 				<div class="mb-3 row">
 					<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 					<div class="col-sm-10">
-						<input type="email"  class="form-control" id="emailr" required>
-						<div id="validationE" class="invalid-feedback">
-							
-						</div>
+						<input type="email"  class="form-control " id="emailr" required >
 					</div>
-					
 				</div>
 				<div class="mb-3 row">
 					<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
@@ -147,13 +149,13 @@
 				  <div class="mb-3 row">
 					<label for="inputNombre" class="col-sm-2 col-form-label">Nombres</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" id="nombresr" required>
+						<input type="text" class="form-control" id="nombresr" required>
 					</div>
 				  </div>
 				  <div class="mb-3 row">
 					<label for="inputNombre" class="col-sm-2 col-form-label">Apellidos</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" id="apelliodosr" required>
+						<input type="text" class="form-control" id="apelliodosr" required>
 					</div>
 				  </div>
 				  <div class="mb-3 row">
@@ -164,19 +166,19 @@
 				  </div>
 				  <select class="form-select" aria-label="Default select example" id="carrerar">
 					<option selected>Carrera</option>
-					<option value="1">Ingeniería de sistemas </option>
-					<option value="2">Ingeniería Ambiental</option>
-					<option value="3">Ingeniería agroindustrial</option>
-					<option value="4">Administración de empresas</option>
-					<option value="5">Contabilidad</option>
-					<option value="6">Educación primaria intercultural bilingüe</option>
+					<option value="Ingeniería de sistemas">Ingeniería de sistemas </option>
+					<option value="Ingeniería Ambiental">Ingeniería Ambiental</option>
+					<option value="Ingeniería agroindustrial">Ingeniería agroindustrial</option>
+					<option value="Administración de empresas">Administración de empresas</option>
+					<option value="Contabilidad">Contabilidad</option>
+					<option value="Educación primaria intercultural bilingüe">Educación primaria intercultural bilingüe</option>
 				  </select>
 				  <br>
 				  <select class="form-select" aria-label="Default select example" id="tipor">
 					<option selected>Tipo de investigación </option>
-					<option value="1">Titulo profesional </option>
-					<option value="2">Bachiller </option>
-					<option value="3">Semilleros de investigación </option>
+					<option value="Titulo profesional">Titulo profesional </option>
+					<option value="Bachiller">Bachiller </option>
+					<option value="Semilleros de investigación">Semilleros de investigación </option>
 				  </select><br>
 				  <div id="errorPostulante">
 					
@@ -189,29 +191,6 @@
 					</div>
 				</div>
 			</div>
-			
-			<!-- Modal -->
-			<!-- <div class="modal fade" id="modalcito"  aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-					...
-					</div>
-					<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-					</div>
-				</div>
-				</div>
-			</div>
-			<script>
-				var myModal = new bootstrap.Modal(document.getElementById('modalcito'))
-				myModal.show()
-			</script>pt -->
 		</div>
 		</div>
 	</div>
