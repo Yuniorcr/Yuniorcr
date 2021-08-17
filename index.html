@@ -48,7 +48,7 @@
 					</span>
 					
 					
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" >
 						<input class="input100" type="email" id="email" name="email">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Email</span>
@@ -137,35 +137,35 @@
 				<div class="mb-3 row">
 					<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 					<div class="col-sm-10">
-						<input type="email"  class="form-control " id="emailr" required >
+						<input type="email"  class="form-control " id="emailr" required placeholder="Email">
 					</div>
 				</div>
 				<div class="mb-3 row">
 					<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 					<div class="col-sm-10">
-						<input type="password" class="form-control" id="passr" required>
+						<input type="password" class="form-control" id="passr" required placeholder="Enter your password 6 caracters min">
 					</div>
 				</div>
 				  <div class="mb-3 row">
 					<label for="inputNombre" class="col-sm-2 col-form-label">Nombres</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="nombresr" required>
+						<input type="text" class="form-control" id="nombresr" required placeholder="Nombres">
 					</div>
 				  </div>
 				  <div class="mb-3 row">
 					<label for="inputNombre" class="col-sm-2 col-form-label">Apellidos</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="apelliodosr" required>
+						<input type="text" class="form-control" id="apelliodosr" required placeholder="Apellidos">
 					</div>
 				  </div>
 				  <div class="mb-3 row">
 					<label for="inputNombre" class="col-sm-2 col-form-label">Codigo</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" id="codigor" required>
+					  <input type="text" class="form-control" id="codigor" placeholder="1000020181" required>
 					</div>
 				  </div>
 				  <select class="form-select" aria-label="Default select example" id="carrerar">
-					<option selected>Carrera</option>
+					<option value="1" selected>Carrera</option>
 					<option value="Ingeniería de sistemas">Ingeniería de sistemas </option>
 					<option value="Ingeniería Ambiental">Ingeniería Ambiental</option>
 					<option value="Ingeniería agroindustrial">Ingeniería agroindustrial</option>
@@ -175,7 +175,7 @@
 				  </select>
 				  <br>
 				  <select class="form-select" aria-label="Default select example" id="tipor">
-					<option selected>Tipo de investigación </option>
+					<option value="1" selected>Tipo de investigación </option>
 					<option value="Titulo profesional">Titulo profesional </option>
 					<option value="Bachiller">Bachiller </option>
 					<option value="Semilleros de investigación">Semilleros de investigación </option>
@@ -183,6 +183,9 @@
 				  <div id="errorPostulante">
 					
 				  </div>
+				  <div id="load3">
+
+				</div>
 				  <div class="modal-footer">
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" id="registrarPostulante">

@@ -1,4 +1,3 @@
-
 document.getElementById("SigOut").addEventListener("click", function sigOut(){
   firebase.auth().signOut().then(() => {
       location.href= "index.html"
@@ -69,9 +68,7 @@ function mostrarTablap(){
       <td>${doc.data().secondName}</td>
       <td>${doc.data().type}</td>
       <td>${doc.data().participante}</td>
-      <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4" onclick="eliminarMensaje('${doc.id}','${doc.data().email}')"><span class="iconify" data-icon="feather-trash-2" data-inline="false"></span>Eliminar</a></td>
-      <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2"><span data-feather="refresh-cw"></span>Actualizar</a></td>
-    </tr>`
+      </tr>`
     });
   });
 }
@@ -208,9 +205,7 @@ function mostrarTablaProyectos(){
         <td>${doc.data().problemaSolucionar}</td>
         <td>${doc.data().objetivoGeneral}</td>
         <td>${doc.data().categoria}</td>
-        <td><a href="#" class="link-danger" onclick="eliminar2('${doc.id}')"><span data-feather="trash-2"></span>Eliminar</a></td>
-        <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal3"><span data-feather="refresh-cw"></span>Actualizar</a></td>
-      </tr>`
+        </tr>`
     });
   });
 }
