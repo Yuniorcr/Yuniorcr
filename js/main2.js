@@ -23,9 +23,22 @@ firebase.auth().onAuthStateChanged(function(user) {
       email = user.email;
       photoUrl = user.photoURL;
       emailVerified = user.emailVerified;
+      console.log(email)
+      var db = firebase.firestore();
+      db.collection("users").where("participante", "==", "jurado").where("email", "==", email).onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log(doc);+
+          console.log("entr1");
+          if (doc.data() == "") {
+            
+            console.log("entra");
+            location.href = "/"
+          } 
+        });
+    });
     }
   } else {
-    console.log("no exise")
+    location.href = "/"
   }
 });
 

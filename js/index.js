@@ -31,6 +31,7 @@ document.getElementById("email").addEventListener("keypress", function(event){
 })
 
 function SigIn(email, password){
+    
     document.getElementById("load").innerHTML =`
     <div class="d-flex justify-content-center" id="load1">
       <div class="spinner-border text-info" role="status">
@@ -40,16 +41,22 @@ function SigIn(email, password){
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in
-      var user = userCredential.user;
       var db = firebase.firestore();
       db.collection("users").where("email", "==", email).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           if(doc.data().participante == "postulante"){
             location.href = "postulante-proyecto.html"
-          }else{
-            location.href = "main.html"
           }
-          
+          else if(doc.data().participante == "jurado") {
+            location.href = "main.html"
+          }else {
+            firebase.auth().signOut().then(() => {
+              location.href = "/"
+            }).catch((error) => {
+              // An error happened.
+            });
+          }
+            
         });
     });
     })
