@@ -162,12 +162,110 @@
 
   <div class="b-example-divider"></div>
   <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <h2 class="text-center mt-4 mb-4">Seguimiento de Actividades</h2>
     <div class="mt-4">
-      <p class="fw-bold fs-1 text-uppercase text-center">En construcción</p>
+      <div  class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Actividades</th>
+              <th scope="col">Desde</th>
+              <th scope="col">Hasta</th>
+              <th scope="col">Accion</th>
+              <th scope="col">Resultado</th>
+            </tr>
+          </thead>
+          <tbody id="tablitaMes">
+            <th scope="row">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Actividad" id="Actividad">
+                </div>
+            </th>
+            <td>
+              <div class="input-group mb-3">
+                <input type="date" class="form-control" aria-describedby="basic-addon1">
+              </div>
+          </td>
+          <td>
+            <div class="input-group mb-3">
+              <input type="date" class="form-control" aria-describedby="basic-addon1">
+            </div>
+          </td>
+          <td>
+            <a href="#" class="link-success"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-file-pdf"></i> Presentar</a> 
+          </td>
+          <td>
+            <a href="#" class="link-warning" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <i class="fas fa-star"></i> Resultado</a>
+          </td>
+          </tbody>
+        </table>
+      </div>
     </div>
+    </div>
+  </main>
+  <!-- modal presentar-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Presentar Documentacion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile01">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de resultados-->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel1">Resultados</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="accordion accordion-flush" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Nombre de Proyecto
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <div class="alert alert-warning" role="alert">
+                    No hay resultados por ahora
+                  </div>
+                  <div class="alert alert-success" role="alert">
+                    Actividad Cumplida
+                  </div>
+                  <div class="alert alert-danger" role="alert">
+                    Actividad no cumplida
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/sidebars.js"></script>
     <script src="js/credentials.js"></script>
     <script src="js/postulante.js"></script>
+    
   </body>
 </html>
