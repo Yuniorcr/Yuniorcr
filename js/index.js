@@ -44,10 +44,10 @@ function SigIn(email, password){
       var db = firebase.firestore();
       db.collection("users").where("email", "==", email).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          if(doc.data().participante == "postulante"){
+          if(doc.data().participante == "postulante" ){
             location.href = "postulante-proyecto.html"
           }
-          else if(doc.data().participante == "jurado") {
+          else if(doc.data().participante == "jurado" || doc.data().participante == "administrativo") {
             location.href = "main.html"
           }else {
             firebase.auth().signOut().then(() => {
