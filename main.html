@@ -72,6 +72,15 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="project-tab" data-bs-toggle="tab" data-bs-target="#project" type="button" role="tab" aria-controls="project" aria-selected="false"><span data-feather="layers"></span>Proyectos</button>
           </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button" role="tab" aria-controls="admin" aria-selected="false"><span data-feather="users"></span>Administrativo</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="convocatoria-tab" data-bs-toggle="tab" data-bs-target="#Convocatoria" type="button" role="tab" aria-controls="convocatoria" aria-selected="false"><span data-feather="layers"></span>Convocatoria</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="asignacion-tab" data-bs-toggle="tab" data-bs-target="#Asignacion" type="button" role="tab" aria-controls="Asignacion" aria-selected="false"><span data-feather="layers"></span>Asignar Proyectos</button>
+          </li>
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Reportes</span>
@@ -152,10 +161,11 @@
           </div>
         </div>
         </li>
+        </ul>
       </div>
     </main>
     </div>
-
+    <!-- Tab jurado-->
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -188,6 +198,7 @@
         </div>
       </main>
       </div>
+      <!-- Tab postulante-->
       <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -222,7 +233,7 @@
           </div>
         </main>
         </div>
-
+        <!-- tab project-->
         <div class="tab-pane fade" id="project" role="tabpanel" aria-labelledby="project-tab">
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -255,6 +266,315 @@
               </table>
             </div>
           </main>
+          </div>
+        <!-- Tab administrativo-->
+        <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Personal Administrativo</h1>
+              <input class="form-control ms-2 mx-2" type="text" placeholder="Buscar" aria-label="default input example">
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Buscar</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Administrativo">Agregar</button>
+                  
+                </div>
+              </div>
+            </div>
+            <h2>Tabla de datos</h2>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>E-mail</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Tipo</th>
+                  </tr>
+                </thead>
+                <tbody id="">
+                  <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
+                </tbody>
+              </table>
+            </div>
+          </main>
+          </div>
+          <!-- modal administrativo-->
+          <div class="modal fade" id="Administrativo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Administrativo</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">E-mail</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Contraseña</span>
+                    <input type="password" class="form-control" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Nombres</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Apellidos</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary"><span data-feather="save"></span>Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Convocatorias-->
+          <div class="tab-pane fade" id="Convocatoria" role="tabpanel" aria-labelledby="convocatoria-tab">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Convocatorias</h1>
+                <input class="form-control ms-2 mx-2" type="text" placeholder="Buscar" aria-label="default input example">
+                <div class="btn-toolbar mb-2 mb-md-0">
+                  <div class="btn-group me-2">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Buscar</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Convocatorias">Agregar</button>
+                    
+                  </div>
+                </div>
+              </div>
+              <h2>Tabla de datos</h2>
+              <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                  <thead>
+                    <tr>
+                      <th>Nombre Convocatoria</th>
+                      <th>Inicio Convocatoria</th>
+                      <th>Inicio Presentacion</th>
+                      <th>Fin Presentacion</th>
+                      <th>Cierre Convocatoria</th>
+                      <th>Inicio Evaluacion</th>
+                      <th>Fin Evaluacion</th>
+                      <th>Publicación Resultados</th>
+                      <th>Inicio Ejecución</th>
+                    </tr>
+                  </thead>
+                  <tbody id="">
+                    <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
+                  </tbody>
+                </table>
+              </div>
+            </main>
+            </div>
+            <!-- Modal convocatorias-->
+            <div class="modal fade" id="Convocatorias" tabindex="-1" aria-labelledby="exampleModalLabelx" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabelx">Convocatorias</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Nombre Convocatoria</span>
+                      <input type="text" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Inicio Convocatoria</span>
+                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Inicio Presentacion</span>
+                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Fin Presentacion</span>
+                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Cierre Convocatoria</span>
+                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Inicio Evaluacion</span>
+                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Fin Evaluacion</span>
+                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Publicación Resultados</span>
+                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">Inicio Ejecución</span>
+                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary"><span data-feather="save"></span>Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Asignacion-->
+        <div class="tab-pane fade" id="Asignacion" role="tabpanel" aria-labelledby="asignacion-tab">
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Asignar Proyectos</h1>
+              <input class="form-control ms-2 mx-2" type="text" placeholder="Buscar" aria-label="default input example">
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Buscar</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#Asignaciones">Agregar</button>
+                  
+                </div>
+              </div>
+            </div>
+            <h2>Tabla de datos</h2>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>Nombres Jurado</th>
+                    <th>Proyecto</th>
+                  </tr>
+                </thead>
+                <tbody id="">
+                  <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
+                </tbody>
+              </table>
+            </div>
+          </main>
+          </div>
+          <!-- modal Asignacion-->
+          <div class="modal fade" id="Asignaciones" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Asignaciones</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group mb-3">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>Carrera</option>
+                      <option value="Ingeniería de sistemas">Ingeniería de sistemas </option>
+                      <option value="Ingeniería Ambiental">Ingeniería Ambiental</option>
+                      <option value="Ingeniería agroindustrial">Ingeniería agroindustrial</option>
+                      <option value="Administración de empresas">Administración de empresas</option>
+                      <option value="Contabilidad">Contabilidad</option>
+                      <option value="Educación primaria intercultural bilingüe">Educación primaria intercultural bilingüe</option>
+                  </select>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Jurado" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <span class="input-group-text" id=""><a type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#elegirjurado">Elegir Jurado</a></span>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Elegir Proyectos" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled>
+                    <span class="input-group-text" id=""><a type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#elegirproyecto">Elegir Proyectos</a></span>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                      <thead>
+                        <tr>
+                          <th>Nombre Proyecto</th>
+                          <th>Reponsable</th>
+                        </tr>
+                      </thead>
+                      <tbody id="">
+                        <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary"><span data-feather="save"></span>Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- modal Elegir jurado-->
+          <div class="modal fade" id="elegirjurado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Asignaciones</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Apellidos</th>
+                        <th>Nombres</th>
+                        <th>Accion</th>
+                      </tr>
+                    </thead>
+                    <tbody id="">
+                      <tr>
+                        <td>aqui nombres y apellidos de jurado</td>
+                        <td>aqui nombres y apellidos de jurado</td>
+                        <td><a type="button" class="btn btn-primary">Elegir</a></td>
+                      </tr>
+                      <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Elegir proyectos-->
+          <div class="modal fade" id="elegirproyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Asignaciones</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Nombre Proyecto</th>
+                        <th>Responsable</th>
+                        <th>Accion</th>
+                      </tr>
+                    </thead>
+                    <tbody id="">
+                      <tr>
+                        <td>aqui nombre de proyecto</td>
+                        <td>aqui nombres de responsable</td>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Elegir
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary"><span data-feather="save"></span>Elegir</button>
+                </div>
+              </div>
+            </div>
           </div>
 
   </div>
