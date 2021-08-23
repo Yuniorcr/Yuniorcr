@@ -1,4 +1,4 @@
-# UNAJMA
+
 project for university 
 
 Welcome to the UNAJMA wiki!
