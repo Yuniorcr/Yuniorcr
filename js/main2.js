@@ -23,18 +23,19 @@ firebase.auth().onAuthStateChanged(function(user) {
       email = user.email;
       photoUrl = user.photoURL;
       emailVerified = user.emailVerified;
-      console.log(email)
       var db = firebase.firestore();
       db.collection("users").where("participante", "==", "jurado").where("email", "==", email).onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          console.log(doc);+
-          console.log("entr1");
-          if (doc.data() == "") {
-            
-            console.log("entra");
-            location.href = "/"
-          } 
-        });
+        if (querySnapshot.empty == true) {
+          firebase.auth().signOut().then(() => {
+            location.href= "/"
+          }).catch((error) => {
+            console.log(error);
+          });
+        }else if (querySnapshot.empty == false) {
+          mostrarTablap()
+          mostrarTablaProyectos()
+          mostrarTablaj()
+        }
     });
     }
   } else {
@@ -64,7 +65,7 @@ function mostrarTablaj(){
     });
 });
 }
-mostrarTablaj()
+
 // console.log(document.getElementById("id").value)
 function mostrarTablap(){
   var db = firebase.firestore();
@@ -85,7 +86,6 @@ function mostrarTablap(){
     });
   });
 }
-mostrarTablap()
 
 function registrarJurado(){
   var errorj = document.getElementById("errorjurado");
@@ -222,7 +222,6 @@ function mostrarTablaProyectos(){
     });
   });
 }
-mostrarTablaProyectos()
 
 function eliminar2(id) {
   var db = firebase.firestore();
