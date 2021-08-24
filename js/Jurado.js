@@ -70,8 +70,8 @@ group9.forEach(e => {
     })
 });
 
-function calificar(){
-    console.log('calificar')
+function calificar(t){
+    total.innerHTML=`<input type="text" value="${t}" id="total1" hidden>`
 }
 
 function sigOut(){
@@ -114,14 +114,21 @@ function mostrarProyectosJurado(){
 
 function agregaridP(id1){
     var id = document.getElementById("idproyecto1");
-    console.log(id1)
+    id.value = id1
 }
-function revisar(t) {
-    var washingtonRef = db.collection("cities").doc("DC");
+
+function revisar() {
+    
+    var id = document.getElementById("idproyecto1").value
+    console.log(id);
+    var db = firebase.firestore(); 
+    var total = document.getElementById("total1").value;
+    console.log(total);
+    var washingtonRef = db.collection("nombre-proyecto").doc(id);
 
     // Set the "capital" field of the city 'DC'
     return washingtonRef.update({
-        capital: true
+        calificacion: total
     })
     .then(() => {
         console.log("Document successfully updated!");
@@ -140,7 +147,8 @@ function update(idProyectito){
     var problema = document.getElementById("problema")
     var Actividad = document.getElementById("Actividad")
     var descargame = document.getElementById("descargame")
-    
+    var inicio = document.getElementById("inicio")
+    var fin = document.getElementById("fin")
     var docRef = db.collection("nombre-proyecto").doc(idProyectito);
 
     docRef.get().then((doc) => {
@@ -151,6 +159,8 @@ function update(idProyectito){
             objetivo.value = doc.data().objetivoGeneral
             problema.value = doc.data().problemaSolucionar
             Actividad.value = doc.data().actividad
+            fin.value= doc.data().FechaFin
+            inicio.value = doc.data().FechaInicio
             descargame.innerHTML =`
             <a href="${doc.data().archivo}" type="button" class="btn btn-outline-danger">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-pdf" viewBox="0 0 16 16">

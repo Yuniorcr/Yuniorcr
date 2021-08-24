@@ -114,3 +114,23 @@ function guardarAcoleccion(id, nombreProyecto, tipoinvestigacion, objetivoGenera
                 });
             });
 }
+
+
+function mostrarConvocatoria(){
+    var i = 1;
+    var db = firebase.firestore();
+    var tb = document.getElementById("tbPostulante")
+    db.collection("nombre_convocatoria").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            tb.innerHTML +=`
+            <tr>
+            <td>${i++}</td>
+                <td>${doc.data().nombreConvocatoria}</td>
+                <td><a href="${doc.data().basesconcurso}" class="link-success"><i class="far fa-file-pdf"></i> Bases de Convocatoria</a></td>
+                <td><a href="#" class="link-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus-square"></i> Presentar</a></td>
+            </tr>`
+        });
+    });
+    
+}
+mostrarConvocatoria()

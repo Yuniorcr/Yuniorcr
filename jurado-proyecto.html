@@ -208,11 +208,11 @@
                       <input type="text" class="form-control" placeholder="Actividad" id="Actividad"disabled>
                     </div>
                 </th>
-                <td hidden>
-                  <input type="date" id="inicio">
+                <td >
+                  <input type="date" id="inicio" disabled>
                 </td>
-                <td hidden>
-                  <input type="date" id="fin">
+                <td >
+                  <input type="date" id="fin" disabled>
                 </td>
               </tbody>
             </table>
@@ -271,7 +271,6 @@
               </tr>
             </thead>
             <tbody>
-              <form id="contador">
                 <tr>
                   <input type="text" hidden id="idproyecto1">
                   <td scope="row" rowspan="6">I. Calidad Científica de la propuesta</td>
@@ -655,9 +654,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary" >Guardar</button>
+          <button type="submit" class="btn btn-primary" onclick="revisar()" >Guardar</button>
         </div>
-      </form>
       </div>
     </div>
   </div>
