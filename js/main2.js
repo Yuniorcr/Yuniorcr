@@ -64,12 +64,12 @@ function mostrarTablaj(){
           <td>${doc.data().participante}</td>
           
           <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal4" onclick="eliminarMensaje('${doc.id}','${doc.data().email}')"><span class="iconify" data-icon="feather-trash-2" data-inline="false"></span>Eliminar</a></td>
-          <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="actualizar('${doc.data().email}','${doc.data().firstName}','${doc.data().secondName}','${doc.data().code}','${doc.data().carrera}','${doc.data().type}')"><span class="iconify" data-icon="feather-refresh-cw" data-inline="false"></span>Actualizar</a></td>
+
         </tr>`
     });
 });
 }
-
+//          <td><a href="#" class="link-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="actualizar('${doc.data().email}','${doc.data().firstName}','${doc.data().secondName}','${doc.data().code}','${doc.data().carrera}','${doc.data().type}')"><span class="iconify" data-icon="feather-refresh-cw" data-inline="false"></span>Actualizar</a></td>
 // console.log(document.getElementById("id").value)
 function mostrarTablap(){
   var db = firebase.firestore();

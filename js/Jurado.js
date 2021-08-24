@@ -90,7 +90,7 @@ function mostrarProyectosJurado(){
                 if (user !== null) {
                     const email = user.email;
                     // .where("email" , "==", email)
-                    db.collection("asignacion").onSnapshot((querySnapshot) => { 
+                    db.collection("asignacion").where("email" , "==", email).onSnapshot((querySnapshot) => { 
                         querySnapshot.forEach((doc) => {
                             tb.innerHTML =`
                             <tr>

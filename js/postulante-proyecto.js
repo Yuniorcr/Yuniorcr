@@ -70,7 +70,7 @@ function guardarDatos(id) {
     var downloadURL = id
     var nombreProyecto = document.getElementById("NombreProyecto").value
     var tipoinvestigacion = document.getElementById("tipoinvestigacion").value
-    var carrera = document.getElementById("carrera").value
+    var carrera = document.getElementById("categoria").value
     var objetivoGeneral = document.getElementById("objetivo").value
     var problemaSolucionar = document.getElementById("problema").value
     var inicio = document.getElementById("inicio").value
@@ -81,6 +81,7 @@ function guardarDatos(id) {
             guardarAcoleccion(downloadURL,nombreProyecto,tipoinvestigacion,objetivoGeneral,problemaSolucionar,user.email,inicio,fin,actividad,carrera)
         }
     });
+    console.log(carrera)
 }
 function guardarAcoleccion(id, nombreProyecto, tipoinvestigacion, objetivoGeneral, problemaSolucionar,email,inicio,fin,Actividad,carrera) {
             var db = firebase.firestore();
