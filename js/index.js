@@ -46,9 +46,10 @@ function SigIn(email, password){
         querySnapshot.forEach((doc) => {
           if(doc.data().participante == "postulante" ){
             location.href = "postulante-proyecto.html"
-          }
-          else if(doc.data().participante == "jurado" || doc.data().participante == "administrativo") {
+          }else if(doc.data().participante == "administrativo") {
             location.href = "main.html"
+          }else if(doc.data().participante == "jurado"){
+            location.href = "jurado.html"
           }else {
             firebase.auth().signOut().then(() => {
               location.href = "/"

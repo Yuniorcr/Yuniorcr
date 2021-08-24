@@ -156,13 +156,8 @@
             <th>Acción</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Nombre</td>
-            <td><a href="#" class="link-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-info-circle"></i> Información</a></td>
-            <td><a href="#" class="link-success" data-bs-toggle="modal" data-bs-target="#exampleModal1" id="revisar"><i class="fas fa-star"></i> Revisar</a></td>
-          </tr>
+        <tbody id="juradoCalifica">
+          
         </tbody>
       </table>
     </div>
@@ -179,30 +174,24 @@
         <div class="modal-body">
           <div class="input-group mb-3">
             <span class="input-group-text">Nombre Proyecto</span>
-            <input type="text" class="form-control" id="NombreProyecto" aria-label="Sizing example input" aria-describedby="NombreProyecto">
+            <input type="text" class="form-control" id="NombreProyecto" aria-label="Sizing example input" aria-describedby="NombreProyecto" disabled>
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text" id="NombreResponsable">Responsable</span>
-            <div id="responsable">
-
-            </div>
+            <span class="input-group-text" id="NombreResponsable" disabled>Responsable</span>
+            <input type="text" class="form-control" id="Responsable" aria-label="Sizing example input" aria-describedby="NombreProyecto" disabled>
           </div>
-          <div class="input-group mb-3" id="categoriaPostulante">
+          <div class="input-group mb-3">
+            <span class="input-group-text"  disabled>Categoría</span>
+            <input type="text" class="form-control" id="categoriaPostulante" aria-label="Sizing example input" aria-describedby="NombreProyecto" disabled>
             
           </div>
           <div class="input-group mb-3">
-            <label class="input-group-text" for="Tipo">Tipo de Investigación</label>
-            <Div id="Tipo">
-
-            </Div>
-          </div>
-          <div class="input-group mb-3">
             <span class="input-group-text">Objetivo General</span>
-            <textarea class="form-control" aria-label="With textarea" id="objetivo"></textarea>
+            <textarea class="form-control" aria-label="With textarea" id="objetivo" disabled></textarea>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">Problema a Solucionar</span>
-            <textarea class="form-control" aria-label="With textarea" id="problema"></textarea>
+            <textarea class="form-control" aria-label="With textarea" id="problema" disabled></textarea>
           </div>
           <div  class="table-responsive">
             <table class="table table-striped table-hover">
@@ -214,23 +203,22 @@
                 </tr>
               </thead>
               <tbody id="tablitaMes">
-                <th scope="row">
+                <th scope="row" disabled>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Actividad" id="Actividad">
+                      <input type="text" class="form-control" placeholder="Actividad" id="Actividad"disabled>
                     </div>
                 </th>
-                <td>
+                <td hidden>
                   <input type="date" id="inicio">
-              </td>
-              <td>
-                <input type="date" id="fin">
-              </td>
+                </td>
+                <td hidden>
+                  <input type="date" id="fin">
+                </td>
               </tbody>
             </table>
           </div>
-          <div class="mb-3">
-            <label for="formFile" class="form-label">Seleccionar su archivo del proyecto en formato .pdf</label>
-            <input class="form-control" type="file" id="formFile">
+          <div class="mb-3" id="descargame">
+            
           </div>
         </div>
         <div class="modal-footer">
@@ -283,8 +271,9 @@
               </tr>
             </thead>
             <tbody>
-              <form action="" method="GET" id="contador">
+              <form id="contador">
                 <tr>
+                  <input type="text" hidden id="idproyecto1">
                   <td scope="row" rowspan="6">I. Calidad Científica de la propuesta</td>
                   <td>Claridad de los objetivos y coherentes con la formulación de problemas.</td>
                   <td>

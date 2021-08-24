@@ -28,15 +28,16 @@ function verificarPerfil(){
                     document.getElementById("responsable").innerHTML =`
                     <span class="input-group-text" id="NombreResponsable">Responsable</span>
             <input type="text" id="responsable" value="${doc.data().firstName} ${doc.data().secondName}" class="form-control" aria-label="Sizing example input" aria-describedby="NombreResponsable" disabled>`
-});
+                    document.getElementById("carrera").innerHTML=`
+                    <span class="input-group-text" id="NombreResponsable">Carrera</span>
+                    <input type="text" id="carrera" value="${doc.data().carrera}" class="form-control" aria-label="Sizing example input" aria-describedby="NombreResponsable" disabled>`
+        });
             });
         } else {
           // User is signed out
           // ...
         }
-      });
-    
-    
+    });
 }
 
 verificarPerfil()
@@ -45,16 +46,8 @@ verificarPerfil()
 function guardar(){
     var storageRef = firebase.storage().ref();
     var file = document.getElementById('formFile').files[0]
-
     var uploadTask = storageRef.child(file.name).put(file);
-
-    // Register three observers:
-    // 1. 'state_changed' observer, called any time the state changes
-    // 2. Error observer, called on failure
-    // 3. Completion observer, called on successful completion
     uploadTask.on('state_changed', function(snapshot){
-    // Observe state change events such as progress, pause, and resume
-    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
     var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
     console.log('Upload is ' + progress + '% done');
     switch (snapshot.state) {
@@ -66,10 +59,7 @@ function guardar(){
         break;
     }
     }, function(error) {
-    // Handle unsuccessful uploads
     }, function() {
-    // Handle successful uploads on complete
-    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
     uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
         guardarDatos(downloadURL)
     });
@@ -80,6 +70,7 @@ function guardarDatos(id) {
     var downloadURL = id
     var nombreProyecto = document.getElementById("NombreProyecto").value
     var tipoinvestigacion = document.getElementById("tipoinvestigacion").value
+    var carrera = document.getElementById("carrera").value
     var objetivoGeneral = document.getElementById("objetivo").value
     var problemaSolucionar = document.getElementById("problema").value
     var inicio = document.getElementById("inicio").value
@@ -87,11 +78,11 @@ function guardarDatos(id) {
     var actividad = document.getElementById("Actividad").value
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-            guardarAcoleccion(downloadURL,nombreProyecto,tipoinvestigacion,objetivoGeneral,problemaSolucionar,user.email,inicio,fin,actividad)
+            guardarAcoleccion(downloadURL,nombreProyecto,tipoinvestigacion,objetivoGeneral,problemaSolucionar,user.email,inicio,fin,actividad,carrera)
         }
     });
 }
-function guardarAcoleccion(id, nombreProyecto, tipoinvestigacion, objetivoGeneral, problemaSolucionar,email,inicio,fin,Actividad) {
+function guardarAcoleccion(id, nombreProyecto, tipoinvestigacion, objetivoGeneral, problemaSolucionar,email,inicio,fin,Actividad,carrera) {
             var db = firebase.firestore();
             db.collection("users").where("email", "==", email).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
@@ -104,6 +95,7 @@ function guardarAcoleccion(id, nombreProyecto, tipoinvestigacion, objetivoGenera
                         responsable: doc.data().firstName+' '+doc.data().secondName,
                         categoria: doc.data().type,
                         actividad: Actividad,
+                        carrera: carrera,
                         FechaInicio: inicio,
                         FechaFin: fin
                     })

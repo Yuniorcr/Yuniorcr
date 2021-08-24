@@ -37,6 +37,7 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
   </head>
   <body>
     
@@ -295,7 +296,7 @@
                     <th>Tipo</th>
                   </tr>
                 </thead>
-                <tbody id="">
+                <tbody id="administracion">
                   <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
                 </tbody>
               </table>
@@ -313,24 +314,27 @@
                 <div class="modal-body">
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">E-mail</span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="emailAdmin">
                   </div>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Contraseña</span>
-                    <input type="password" class="form-control" aria-describedby="basic-addon1">
+                    <input type="password" class="form-control" aria-describedby="basic-addon1" id="passAdmin">
                   </div>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nombres</span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="nameAdmin">
                   </div>
                   <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Apellidos</span>
-                    <input type="text" class="form-control" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="apelAdmin">
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary"><span data-feather="save"></span>Guardar</button>
+                  <button type="button" onclick="agregarAdministrativo()" class="btn btn-primary"><span data-feather="save"></span>Guardar</button>
+                </div>
+                <div id="errorAdministrativo">
+
                 </div>
               </div>
             </div>
@@ -364,9 +368,10 @@
                       <th>Fin Evaluacion</th>
                       <th>Publicación Resultados</th>
                       <th>Inicio Ejecución</th>
+                      <th>base Convocatoria</th>
                     </tr>
                   </thead>
-                  <tbody id="">
+                  <tbody id="convocatoriatb">
                     <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
                   </tbody>
                 </table>
@@ -384,48 +389,54 @@
                   <div class="modal-body">
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Nombre Convocatoria</span>
-                      <input type="text" class="form-control" aria-describedby="basic-addon1">
+                      <input type="text" class="form-control" aria-describedby="basic-addon1" id="nameC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Inicio Convocatoria</span>
-                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                      <input type="date" class="form-control" aria-describedby="basic-addon1" id="icC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Inicio Presentacion</span>
-                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                      <input type="date" class="form-control" aria-describedby="basic-addon1" id="ipC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Fin Presentacion</span>
-                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                      <input type="date" class="form-control" aria-describedby="basic-addon1" id="fpC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Cierre Convocatoria</span>
-                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                      <input type="date" class="form-control" aria-describedby="basic-addon1" id="cC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Inicio Evaluacion</span>
-                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                      <input type="date" class="form-control" aria-describedby="basic-addon1" id="ieC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Fin Evaluacion</span>
-                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                      <input type="date" class="form-control" aria-describedby="basic-addon1" id="feC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Publicación Resultados</span>
-                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                      <input type="date" class="form-control" aria-describedby="basic-addon1" id="prC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Inicio Ejecución</span>
-                      <input type="date" class="form-control" aria-describedby="basic-addon1">
+                      <input type="date" class="form-control" aria-describedby="basic-addon1" id="iejC">
                     </div>
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">Bases De concurso</span>
-                      <input type="file" class="form-control" aria-describedby="basic-addon1">
+                      <input type="file" class="form-control" aria-describedby="basic-addon1" id="bccC">
+                    </div>
+                    <div id="convocatoriaE">
+
+                    </div>
+                    <div id="convocatoriaEA">
+
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary"><span data-feather="save"></span>Guardar</button>
+                    <button type="button" onclick="registrarConvocatorias()" class="btn btn-primary"><span data-feather="save"></span>Guardar</button>
                   </div>
                 </div>
               </div>
@@ -453,7 +464,8 @@
                     <th>Proyecto</th>
                   </tr>
                 </thead>
-                <tbody id="">
+                <tbody id="mostrarAsignacion">
+
                   <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
                 </tbody>
               </table>
@@ -470,8 +482,8 @@
                 </div>
                 <div class="modal-body">
                   <div class="input-group mb-3">
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Carrera</option>
+                    <select class="form-select" aria-label="Default select example" id="carrerita">
+                      <option value = ""selected>Carrera</option>
                       <option value="Ingeniería de sistemas">Ingeniería de sistemas </option>
                       <option value="Ingeniería Ambiental">Ingeniería Ambiental</option>
                       <option value="Ingeniería agroindustrial">Ingeniería agroindustrial</option>
@@ -481,12 +493,17 @@
                   </select>
                   </div>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Jurado" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <span class="input-group-text" id=""><a type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#elegirjurado">Elegir Jurado</a></span>
+                    
+                    <input type="text" class="form-control" placeholder="Jurado" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled id="juradoI">
+                    <span class="input-group-text" id=""><a type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#elegirjurado" id="elegirJuradoM" disabled>Elegir Jurado</a></span>
                   </div>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Elegir Proyectos" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled>
-                    <span class="input-group-text" id=""><a type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#elegirproyecto">Elegir Proyectos</a></span>
+                    <input type="text" id="idP" hidden>
+                    <input type="text" id="emailM" hidden>
+                    <input type="text" class="form-control" placeholder="Elegir Proyectos" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled id="postulanteI">
+                    <span class="input-group-text" id="">
+                      <!-- <a type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#elegirproyecto" id="proyectoElegir">Elegir Proyectos</a> -->
+                    </span>
                   </div>
                   <div class="table-responsive">
                     <table class="table table-striped table-sm">
@@ -496,7 +513,7 @@
                           <th>Reponsable</th>
                         </tr>
                       </thead>
-                      <tbody id="">
+                      <tbody id="mostrarTablitaProyecto">
                         <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
                       </tbody>
                     </table>
@@ -504,7 +521,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary"><span data-feather="save"></span>Guardar</button>
+                  <button type="button" class="btn btn-primary" id="saveAsig"><span data-feather="save"></span>Guardar</button>
                 </div>
               </div>
             </div>
@@ -526,12 +543,8 @@
                         <th>Accion</th>
                       </tr>
                     </thead>
-                    <tbody id="">
-                      <tr>
-                        <td>aqui nombres y apellidos de jurado</td>
-                        <td>aqui nombres y apellidos de jurado</td>
-                        <td><a type="button" class="btn btn-primary">Elegir</a></td>
-                      </tr>
+                    <tbody id="mostrarJuradosDesignacion">
+                      
                       <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
                     </tbody>
                   </table>
@@ -559,26 +572,14 @@
                         <th>Accion</th>
                       </tr>
                     </thead>
-                    <tbody id="">
-                      <tr>
-                        <td>aqui nombre de proyecto</td>
-                        <td>aqui nombres de responsable</td>
-                        <td>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                              Elegir
-                            </label>
-                          </div>
-                        </td>
-                      </tr>
+                    <tbody id="elegirproyectoM">
+                      
                       <!-- la tabla similar a jurado con opcion a actualizar y eliminar-->
                     </tbody>
                   </table>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary"><span data-feather="save"></span>Elegir</button>
                 </div>
               </div>
             </div>
@@ -597,11 +598,8 @@
               </div>
             </div>
             <h2 class="mb-4">Tabla de datos</h2>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" id="convocatoriasID">
               <option selected>Convocatoria</option>
-              <option value="1">2019-1</option>
-              <option value="2">2019-2</option>
-              <option value="3">2019-3</option>
             </select>
             <div class="table-responsive">
               <table class="table table-striped table-sm">
@@ -609,7 +607,6 @@
                   <tr>
                     <th>Nombres Proyecto</th>
                     <th>Responsable</th>
-                    <th>Archivo</th>
                     <th>Accion</th>
                   </tr>
                 </thead>
@@ -618,7 +615,6 @@
                   <tr>
                     <td>nombre proyecto</td>
                     <td>Responsable</td>
-                    <td><a href="#" class="link-danger"><i class="far fa-file-pdf"></i> Archivos</a></td>
                     <td><a href="#" class="link-success" data-bs-toggle="modal" data-bs-target="#seguimientox"><i class="fas fa-star"></i> Revisar</a></td>
                   </tr>
                 </tbody>
@@ -649,17 +645,17 @@
                       <tbody id="tablitaMes">
                         <th scope="row">
                             <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Actividad" id="Actividad">
+                              <input type="text" class="form-control" placeholder="Actividad" id="Actividad" disabled="disabled">
                             </div>
                         </th>
                         <td>
                           <div class="input-group mb-3">
-                            <input type="date" class="form-control" aria-describedby="basic-addon1">
+                            <input type="date" class="form-control" aria-describedby="basic-addon1" disabled>
                           </div>
                       </td>
                       <td>
                         <div class="input-group mb-3">
-                          <input type="date" class="form-control" aria-describedby="basic-addon1">
+                          <input type="date" class="form-control" aria-describedby="basic-addon1" disabled>
                         </div>
                       </td>
                       <td>
